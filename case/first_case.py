@@ -10,6 +10,10 @@ from selenium import webdriver
 import HTMLTestRunner_PY3
 
 from business.register_business import RegisterBusiness
+from log.user_log import UserLog
+
+user_log = UserLog()
+logger = user_log.get_log()
 
 
 class FirstCase(unittest.TestCase):
@@ -17,6 +21,8 @@ class FirstCase(unittest.TestCase):
     def setUp(self) -> None:
         self.driver = webdriver.Chrome()
         self.driver.get("http://my.cnki.net/Register/")
+        logger.debug("this is chrome")
+        user_log.close_handle()
         self.register = RegisterBusiness(self.driver)
 
     def tearDown(self) -> None:
