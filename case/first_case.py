@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 __author__ = "leo"
 
+import sys
 import unittest
 import time
 import os
@@ -19,6 +20,7 @@ class FirstCase(unittest.TestCase):
         self.register = RegisterBusiness(self.driver)
 
     def tearDown(self) -> None:
+        time.sleep(2)
         self.driver.close()
 
     def test_login_email_error(self):
@@ -32,14 +34,10 @@ class FirstCase(unittest.TestCase):
     def test_login_password_error(self):
         password_error = self.register.login_password_error("123456@163.com", "user123qwe", "123", "1234")
         self.assertTrue(password_error, "无效密码，注册失败~")
-        if password_error:
-            print("无效密码，注册失败~")
 
     def test_code_error(self):
         code_error = self.register.login_code_text_error_error("123456@163.com", "user123qwe", "123qweasd", "1234")
         self.assertTrue(code_error, "无效验证码，注册失败~")
-        if code_error:
-            print("无效验证码，注册失败~")
 
     def test_login_success(self):
         success = self.register.user_base("123456@163.com", "user123qwe", "123qweasd", "1234")

@@ -26,4 +26,5 @@ class FindElement:
             else:
                 return self.driver.find_element_by_xpath(value)
         except:
+            self.driver.save_screenshot("E:\\测试\\selenium_project\\error.png")
             return None

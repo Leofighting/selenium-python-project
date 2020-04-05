@@ -54,3 +54,12 @@ class RegisterBusiness:
             return True
         else:
             return False
+
+    def register_function(self, email, username, password, code, assertCode, assertText):
+        self.user_base(email, username, password, code)
+
+        if not self.register_h.get_user_text(assertCode, assertText):
+            print("验证码校验不成功~")
+            return True
+        else:
+            return False

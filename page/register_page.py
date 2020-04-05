@@ -39,3 +39,6 @@ class RegisterPage:
 
     def get_email_error_element(self):
         return self.find_el.get_element("email_error")
+
+    def get_check_code_element(self):
+        return self.find_el.get_element("check_code")
